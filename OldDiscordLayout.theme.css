@@ -1,0 +1,123 @@
+/**
+ * @name Old Discord Layout
+ * @version 1.0
+ * @author CoinyyVR
+ * @authorId 1098383881645854810
+ * @description Get the layout that Discord used before 2021.
+ * @source none
+*/
+
+@import url("https://milbits.github.io/oldcord/src/components/imgs.css");
+
+img.emoji {
+  content: attr(src);
+}
+
+img.emoji[src*="/assets/"] {
+  filter: none;
+}
+
+img.emoji[src*="twemoji"] {
+  content: url("https://cdnjs.cloudflare.com/ajax/libs/twemoji/2.2.5/72x72/");
+  image-rendering: pixelated;
+}
+
+/* --- 1. FORCE THE WHOLE APP TO BE SQUARE BY DEFAULT --- */
+* {
+    border-radius: 0 !important;
+}
+
+/* --- 2. MAKE SERVER ICONS AND FOLDERS ROUNDED (EXCLUSIONS) --- */
+[class^="wrapper_"] foreignObject,
+[class^="guildIcon"], 
+[class^="folderIconWrapper"],
+[class^="expandedFolderIconWrapper"],
+[class^="wrapper_"] [class^="childWrapper"],
+svg[class^="mask_"] foreignObject,
+div[role="treeitem"][data-list-item-id^="guildsnav"] {
+    mask: none !important;
+    border-radius: 50% !important;
+}
+
+/* --- 3. KEEP PFPS (AVATARS) ROUNDED --- */
+[class^="avatar_"],
+[class^="avatarStack"],
+[class^="userPopout"] [class^="avatar"],
+[class^="userPanel"] [class^="avatar"] {
+    border-radius: 50% !important;
+}
+
+/* --- 4. FIX SERVER INDICATORS (THE WHITE PILL) --- */
+[class^="item_"] {
+    border-radius: 0 4px 4px 0 !important;
+}
+
+/* --- 5. MAKE THE USER VOLUME SLIDER TRACK ROUNDED (Handle remains square) --- */
+.grabber_a562c8 {
+    /* Handle remains square */
+}
+.track_a562c8 {
+    border-radius: 4px !important; /* Rounds the bar itself */
+}
+
+/* --- 6. MAKE THE VIDEO PROGRESS BAR HANDLE ROUNDED (Targeting specific class) --- */
+/* This specific line should target the handle in the image you provided */
+[class*="mediaBarInteraction"] [class^="grabber_"] {
+    border-radius: 50% !important;
+}
+
+[class*="mediaBarInteraction"] [class^="track_"] {
+    border-radius: 4px !important;
+}
+
+/* Makes the specific media player progress handle rounded/circular */
+.mediaBarGrabber_b26b79 {
+    border-radius: 50% !important; 
+}
+
+/* Ensure the "x1.0" button part of the speed control is rounded */
+[class^="playbackRateButton_"] {
+    border-radius: 4px !important; 
+}
+
+/* Common class for the track part of this specific slider */
+[class*="tts-rate-track"] {
+    border-radius: 4px !important;
+}
+
+/* Common class for the handle part of this specific slider */
+[class*="tts-rate-thumb"],
+[class*="speed-slider-handle"] {
+    border-radius: 50% !important; /* Makes the handle a circle */
+}
+
+/* Makes the specific slider handle you found into a circle */
+.grabber_a562c8 {
+    border-radius: 50% !important; 
+}
+
+/* Optional: Targets the track (the bar the handle slides on) and rounds that too */
+.track_a562c8 {
+    border-radius: 4px !important;
+}
+
+/* Target the main container that wraps the input and SVG slider */
+.vc-switch-container {
+    /* Optional: Ensure the container itself can contain the rounded elements */
+}
+
+/* Ensure the SVG slider itself has the correct rounded attributes if needed */
+.vc-switch-slider {
+   /* We can't easily change SVG 'path' data with simple CSS border-radius */
+}
+
+/* This is the most reliable method: ensure the internal HTML/body respects the rounded settings */
+.vc-switch-container > * {
+    border-radius: inherit !important;
+}
+
+/* Force the main container to inherit the original styling */
+.vc-switch-container {
+    border-radius: 34px !important; 
+}
+
